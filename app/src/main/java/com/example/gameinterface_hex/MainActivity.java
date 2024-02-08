@@ -17,8 +17,8 @@ import android.widget.TextView;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            TextView myFaveTextView = new TextView(this);
-            myFaveTextView.setText("some text");
+//            TextView myFaveTextView = new TextView(this);
+//            myFaveTextView.setText("some text");
         }
 
         /**
