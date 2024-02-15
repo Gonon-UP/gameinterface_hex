@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:layout_marginRight="15sp"
                 android:layout_marginLeft="15sp">
 
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="HEX"
-                    android:textSize="100dp"
+                    android:textSize="65sp"
                     android:gravity="center"/>
             </LinearLayout>
 
@@ -104,15 +104,24 @@
             <LinearLayout
                 android:id="@+id/ll_Settings"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:paddingHorizontal="15sp"
-                android:orientation="horizontal">
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="10sp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textSize="20sp"/>
 
                 <Spinner
                     android:id="@+id/settings"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:entries="@array/settingsItems"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -133,8 +142,6 @@
 
                 android:layout_weight="0"
                 android:orientation="horizontal">
-
-
 
                 <Button
                     android:id="@+id/confirm_button"

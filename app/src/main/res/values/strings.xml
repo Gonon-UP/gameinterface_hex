@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">gameinterface_hex</string>
+    
+    <string-array name="settingsItems">
+        <item>How to Play</item>
+        <item>Change Color</item>
+    </string-array>
+
 </resources>
