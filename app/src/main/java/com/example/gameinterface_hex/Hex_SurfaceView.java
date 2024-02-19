@@ -22,14 +22,11 @@ public class Hex_SurfaceView extends SurfaceView {
     private Path hexagonBorderPath;
     private float radius;
     private float width, height;
-    // private int mBackgroundColor;
-
+    private float height_SurfaceView;
+    private float width_SurfaceView;
     Paint hexPaint = new Paint();
     Paint hexBorderPaint = new Paint();
 
-
-    // Creating an array of hexagons for grid
-    // hexgrid = new HexGrid[10];
 
 
     public Hex_SurfaceView(Context context, AttributeSet attrs) {
@@ -82,8 +79,6 @@ public class Hex_SurfaceView extends SurfaceView {
     private void setUp() {
         hexagonPath = new Path();
         hexagonBorderPath = new Path();
-        // mBackgroundColor = 0xFFFF0930;
-
     }
 
     public void setRadius(float r) {
@@ -91,17 +86,13 @@ public class Hex_SurfaceView extends SurfaceView {
         calculatePath();
     }
 
-//    public void setmBackgroundColor(int color) {
-//        this.mBackgroundColor = color;
-//        invalidate();
-//    }
 
     private void calculatePath() {
 
 
         for (int i = 0; i < 770; i = i + 77) {
-            int xOffset = 500;
-            int yOffset = 100;
+            float xOffset = (width_SurfaceView / 2) - 570;
+            float yOffset = 200;
             for (int j = 0; j < 900; j = j + 90) {
 
                 float triangleHeight = (float) (Math.sqrt(3) * radius / 2);
@@ -130,7 +121,6 @@ public class Hex_SurfaceView extends SurfaceView {
 //                hexagonBorderPath.moveTo(centerX, centerY + radiusBorder);
                   invalidate();
             }
-            //yOffset -= 30;
         }
     }
 
@@ -139,6 +129,8 @@ public class Hex_SurfaceView extends SurfaceView {
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        width_SurfaceView = MeasureSpec.getSize(widthMeasureSpec);
+        // height_SurfaceView = MeasureSpec.getSize(MeasureSpec);
         width = 100; //MeasureSpec.getSize(widthMeasureSpec);
         height = 100; //MeasureSpec.getSize(heightMeasureSpec);
         radius = height / 2 - 5;
