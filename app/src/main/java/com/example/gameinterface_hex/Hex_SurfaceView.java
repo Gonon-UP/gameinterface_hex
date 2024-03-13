@@ -62,7 +62,7 @@ public class Hex_SurfaceView extends SurfaceView {
 
         //canvas.getWidth();
 
-        canvas.drawColor(Color.RED);
+        canvas.drawColor(Color.GRAY);
         canvas.drawPath(hexagonPath, hexPaint);
         canvas.drawPath(hexagonPath, hexBorderPaint);
 
