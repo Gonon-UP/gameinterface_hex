@@ -61,6 +61,7 @@ public class Hex_SurfaceView extends SurfaceView {
 //        canvas.drawColor(Color.WHITE);
 
         //canvas.getWidth();
+        //height_SurfaceView = (float) getHeight();
 
         canvas.drawColor(Color.GRAY);
         canvas.drawPath(hexagonPath, hexPaint);
@@ -90,10 +91,10 @@ public class Hex_SurfaceView extends SurfaceView {
     private void calculatePath() {
 
 
-        for (int i = 0; i < 770; i = i + 77) {
+        for (int i = 0; i < 847; i = i + 77) {
             float xOffset = (width_SurfaceView / 2) - 570;
-            float yOffset = 200;
-            for (int j = 0; j < 900; j = j + 90) {
+            float yOffset = 100;
+            for (int j = 0; j < 990; j = j + 90) {
 
                 float triangleHeight = (float) (Math.sqrt(3) * radius / 2);
                 float centerX = (width / 2 + i);
@@ -130,7 +131,7 @@ public class Hex_SurfaceView extends SurfaceView {
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width_SurfaceView = MeasureSpec.getSize(widthMeasureSpec);
-        // height_SurfaceView = MeasureSpec.getSize(MeasureSpec);
+        height_SurfaceView = MeasureSpec.getSize(heightMeasureSpec);
         width = 100; //MeasureSpec.getSize(widthMeasureSpec);
         height = 100; //MeasureSpec.getSize(heightMeasureSpec);
         radius = height / 2 - 5;
