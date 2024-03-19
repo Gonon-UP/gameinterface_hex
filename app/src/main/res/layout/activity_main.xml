@@ -22,7 +22,7 @@
                 android:id="@+id/ll_PlayerNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:orientation="vertical"
                 android:paddingLeft="15sp">
 
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="2"
+                android:layout_weight="5"
                 android:layout_marginRight="15sp"
                 android:layout_marginLeft="15sp">
 
@@ -59,69 +59,74 @@
                     android:gravity="center"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_Music"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="5sp"
-                android:background="@drawable/my_border"
-                android:layout_weight="2"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/ll_Music"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingHorizontal="5sp"-->
+<!--                android:background="@drawable/my_border"-->
+<!--                android:layout_weight="2"-->
+<!--                android:orientation="vertical">-->
 
-                <TextView
-                    android:id="@+id/MUSIC_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:text="Music"
-                    android:textSize="20sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/MUSIC_textView"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Music"-->
+<!--                    android:textSize="20sp" />-->
 
-                <SeekBar
-                    android:id="@+id/MUSIC_seekBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+<!--                <SeekBar-->
+<!--                    android:id="@+id/MUSIC_seekBar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1" />-->
 
-                <TextView
-                    android:id="@+id/SOUND_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:text="Sound"
-                    android:textSize="20sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/SOUND_textView"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Sound"-->
+<!--                    android:textSize="20sp" />-->
 
-                <SeekBar
-                    android:id="@+id/SOUND_seekBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10sp"
-                    android:layout_weight="1" />
+<!--                <SeekBar-->
+<!--                    android:id="@+id/SOUND_seekBar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingBottom="10sp"-->
+<!--                    android:layout_weight="1" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/ll_Settings"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:paddingHorizontal="15sp"
                 android:layout_marginLeft="30sp"
                 android:layout_marginRight="10sp"
-                android:orientation="vertical">
+                android:layout_weight="0"
+                android:orientation="vertical"
+                android:paddingHorizontal="15sp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Settings"
-                    android:textSize="20sp"/>
-
-                <Spinner
-                    android:id="@+id/settings"
+                <ImageButton
+                    android:id="@+id/settings_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/settingsItems"/>
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_settings_icon"
+                    tools:visibility="visible" />
+
+                <ImageButton
+                    android:id="@+id/rules_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:srcCompat="@drawable/ic_rules_icon" />
             </LinearLayout>
 
         </LinearLayout>
@@ -148,17 +153,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Confirm"
+                    android:text="Undo"
                     android:textSize="20sp"/>
 
-                <Button
-                    android:id="@+id/newgame_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10sp"
-                    android:text="New game"
-                    android:textSize="20sp"/>
+
             </LinearLayout>
         </LinearLayout>
 
