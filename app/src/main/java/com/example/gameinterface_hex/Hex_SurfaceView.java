@@ -91,8 +91,8 @@ public class Hex_SurfaceView extends SurfaceView {
     private void calculatePath() {
 
 
-        for (int i = 0; i < 847; i = i + 77) {
-            float xOffset = (width_SurfaceView / 2) - 570;
+        for (float i = 0; i < 781; i = i + 73) {
+            float xOffset = (width_SurfaceView / 2) - 590;
             float yOffset = 100;
             for (int j = 0; j < 990; j = j + 90) {
 
@@ -100,6 +100,7 @@ public class Hex_SurfaceView extends SurfaceView {
                 float centerX = (width / 2 + i);
                 float centerY = (height / 2 + j);
                 hexagonPath.moveTo(xOffset + centerX, yOffset + centerY + radius);
+
                 hexagonPath.lineTo(xOffset + centerX - triangleHeight, yOffset + centerY + radius / 2);
                 hexagonPath.lineTo(xOffset + centerX - triangleHeight, yOffset + centerY - radius / 2);
                 hexagonPath.lineTo(xOffset + centerX, yOffset + centerY - radius);
@@ -107,8 +108,8 @@ public class Hex_SurfaceView extends SurfaceView {
                 hexagonPath.lineTo(xOffset + centerX + triangleHeight, yOffset + centerY + radius / 2);
                 hexagonPath.moveTo(xOffset + centerX, yOffset + centerY + radius);
 
-                xOffset += 77 / 2;
-                yOffset -= 24;
+                xOffset += (70 / 2) + 2;
+                yOffset -= 25;
 
 
 //                float radiusBorder = radius - 2;
@@ -132,9 +133,9 @@ public class Hex_SurfaceView extends SurfaceView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width_SurfaceView = MeasureSpec.getSize(widthMeasureSpec);
         height_SurfaceView = MeasureSpec.getSize(heightMeasureSpec);
-        width = 100; //MeasureSpec.getSize(widthMeasureSpec);
-        height = 100; //MeasureSpec.getSize(heightMeasureSpec);
-        radius = height / 2 - 5;
+        width = 85; //MeasureSpec.getSize(widthMeasureSpec);
+        height = 85; //MeasureSpec.getSize(heightMeasureSpec);
+        radius = (height / 2);
         calculatePath();
     }
 }
