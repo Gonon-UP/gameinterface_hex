@@ -74,11 +74,11 @@ public class Hex_SurfaceView extends SurfaceView {
         canvas.drawColor(Color.GRAY);
 
         //draws the blue side
-        drawTriangle(360, 80, 820, 760, true, hexBlueSide, canvas);
-        drawTriangle(820, 850, 820, 760, false, hexBlueSide, canvas);
+        drawTriangle(610, 80, 875, 770, true, hexBlueSide, canvas); //left
+        drawTriangle(1125, 850, 875, 770, false, hexBlueSide, canvas);//right
         //draws the red side
-        drawTriangle(360, 80, 920, 300, true, hexRedSide, canvas);
-        drawTriangle(715, 850, 920, 300, false, hexRedSide, canvas);
+        drawTriangle(610, 80, 950, 400, true, hexRedSide, canvas);//top
+        drawTriangle(1040, 850, 950, 400, false, hexRedSide, canvas);//bottom
 
 
         canvas.drawPath(hexagonPath, hexPaint);
