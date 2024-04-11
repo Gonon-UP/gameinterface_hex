@@ -5,21 +5,25 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Region;
+import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
 
-public class Hex_SurfaceView extends SurfaceView {
+
+public class Hex_SurfaceView extends SurfaceView implements View.OnTouchListener {
 
     private Paint brightPink = new Paint();
     private Paint forestGreen = new Paint();
     private Paint teal = new Paint();
 
     // Size and shape variables
-    private Path hexagonPath;
+    private Path hexagonGridPath;
     private Path hexagonBorderPath;
     private float radius;
     private float width, height;
@@ -31,6 +35,8 @@ public class Hex_SurfaceView extends SurfaceView {
 
     Paint hexRedSide = new Paint();
     Paint hexBlueSide = new Paint();
+
+    ArrayList<HexTile> tileList = new ArrayList<>();
 
 
     public Hex_SurfaceView(Context context, AttributeSet attrs) {
@@ -46,6 +52,8 @@ public class Hex_SurfaceView extends SurfaceView {
 
         hexRedSide.setColor(Color.RED);
         hexBlueSide.setColor(Color.BLUE);
+
+        this.setOnTouchListener(this);
 
         setUp();
         setWillNotDraw(false);
@@ -81,8 +89,8 @@ public class Hex_SurfaceView extends SurfaceView {
         drawTriangle(1040, 850, 950, 400, false, hexRedSide, canvas);//bottom
 
 
-        canvas.drawPath(hexagonPath, hexPaint);
-        canvas.drawPath(hexagonPath, hexBorderPaint);
+        canvas.drawPath(hexagonGridPath, hexPaint);
+        canvas.drawPath(hexagonGridPath, hexBorderPaint);
 
 
 //        canvas.clipPath(hexagonBorderPath, Region.Op.DIFFERENCE);
@@ -92,24 +100,20 @@ public class Hex_SurfaceView extends SurfaceView {
 //        canvas.clipPath(hexagonPath, Region.Op.DIFFERENCE);
         canvas.save();
 
-
+        // draws Hex Tiles
+        for(HexTile hT : tileList) {
+            hT.draw(canvas);
+        }
     }
 
 
     private void setUp() {
-        hexagonPath = new Path();
+        hexagonGridPath = new Path();
         hexagonBorderPath = new Path();
-    }
-
-    public void setRadius(float r) {
-        this.radius = r;
-        calculatePath();
     }
 
 
     private void calculatePath() {
-
-
         for (float i = 0; i < 781; i = i + 73) {
             float xOffset = (width_SurfaceView / 2) - 590;
             float yOffset = 100;
@@ -118,28 +122,18 @@ public class Hex_SurfaceView extends SurfaceView {
                 float triangleHeight = (float) (Math.sqrt(3) * radius / 2);
                 float centerX = (width / 2 + i);
                 float centerY = (height / 2 + j);
-                hexagonPath.moveTo(xOffset + centerX, yOffset + centerY + radius);
+                hexagonGridPath.moveTo(xOffset + centerX, yOffset + centerY + radius);
 
-                hexagonPath.lineTo(xOffset + centerX - triangleHeight, yOffset + centerY + radius / 2);
-                hexagonPath.lineTo(xOffset + centerX - triangleHeight, yOffset + centerY - radius / 2);
-                hexagonPath.lineTo(xOffset + centerX, yOffset + centerY - radius);
-                hexagonPath.lineTo(xOffset + centerX + triangleHeight, yOffset + centerY - radius / 2);
-                hexagonPath.lineTo(xOffset + centerX + triangleHeight, yOffset + centerY + radius / 2);
-                hexagonPath.moveTo(xOffset + centerX, yOffset + centerY + radius);
+                hexagonGridPath.lineTo(xOffset + centerX - triangleHeight, yOffset + centerY + radius / 2);
+                hexagonGridPath.lineTo(xOffset + centerX - triangleHeight, yOffset + centerY - radius / 2);
+                hexagonGridPath.lineTo(xOffset + centerX, yOffset + centerY - radius);
+                hexagonGridPath.lineTo(xOffset + centerX + triangleHeight, yOffset + centerY - radius / 2);
+                hexagonGridPath.lineTo(xOffset + centerX + triangleHeight, yOffset + centerY + radius / 2);
+                // hexagonGridPath.moveTo(xOffset + centerX, yOffset + centerY + radius);
 
                 xOffset += (70 / 2) + 2;
                 yOffset -= 25;
 
-
-//                float radiusBorder = radius - 2;
-//                float triangleBorderHeight = (float) (Math.sqrt(3) * radiusBorder / 2);
-//                hexagonBorderPath.moveTo(centerX, centerY + radiusBorder);
-//                hexagonBorderPath.lineTo(centerX - triangleBorderHeight, centerY + radiusBorder / 2);
-//                hexagonBorderPath.lineTo(centerX - triangleBorderHeight, centerY - radiusBorder / 2);
-//                hexagonBorderPath.lineTo(centerX, centerY - radiusBorder);
-//                hexagonBorderPath.lineTo(centerX + triangleBorderHeight, centerY - radiusBorder / 2);
-//                hexagonBorderPath.lineTo(centerX + triangleBorderHeight, centerY + radiusBorder / 2);
-//                hexagonBorderPath.moveTo(centerX, centerY + radiusBorder);
                 invalidate();
             }
         }
@@ -178,5 +172,20 @@ public class Hex_SurfaceView extends SurfaceView {
         path.close();
 
         canvas.drawPath(path, paint);
+    }
+
+    // what are we trying to do first: get the center of the hexagon or comparing to where the user touches?
+
+    /** whenever the user touches the surface view */
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        float x = motionEvent.getX();
+        float y = motionEvent.getY();
+        HexTile hexTile = new HexTile(x,y);
+        tileList.add(hexTile);
+        this.invalidate();
+
+        return false;
+
     }
 }
